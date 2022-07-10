@@ -7,6 +7,8 @@ let btEdit = listaTarefas.querySelectorAll('button.edit')
 function refresh(){
     btDelete = listaTarefas.querySelectorAll('button.delete')
     btEdit = listaTarefas.querySelectorAll('button.edit')
+    addClickBt(btDelete)
+    addClickBt(btEdit)
 }
 
 btAddTarefa.addEventListener('click', () => {
@@ -60,10 +62,24 @@ function criarDiv(nomeTarefa){
     return tarefaNova
 }
 
-//Criar funções dos botões das tarefas
-
+//-------Criar funções dos botões das tarefas-------
+const clicaramEmMim = () => console.log('me clicaram')
+// console.log(typeof(clicaramEmMim))
 // Checkbox
 
 // Delete
-
+    addClickBt(btDelete, clicaramEmMim)
 // Edit
+    addClickBt(btEdit, clicaramEmMim)
+
+
+function addClickBt(listaBotoes, func){
+    listaBotoes.forEach((bt) => {
+        if(!bt.classList.contains('click')){
+            bt.classList.add('click')
+            bt.addEventListener('click', ()=>{
+                func()
+            })
+        }
+    })
+}
