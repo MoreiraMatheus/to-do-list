@@ -1,25 +1,28 @@
-const btAddTarefa = document.querySelectorAll('button')[0]
-const listaTarefas = document.getElementById('lista-tarefas')
-let btDelete = listaTarefas.querySelectorAll('button.delete')
-let btEdit = listaTarefas.querySelectorAll('button.edit')
+const BTADDTAREFA = document.querySelectorAll('button')[0]
+const LISTA_TAREFAS = document.getElementById('lista-tarefas')
+let btDelete = LISTA_TAREFAS.querySelectorAll('button.delete')
+let btEdit = LISTA_TAREFAS.querySelectorAll('button.edit')
+let tarefas = LISTA_TAREFAS.querySelectorAll('div.tarefa')
 
-// atualiza dados importantes
 function refresh(){
-    btDelete = listaTarefas.querySelectorAll('button.delete')
-    btEdit = listaTarefas.querySelectorAll('button.edit')
-    addClickBt(btDelete)
-    addClickBt(btEdit)
+    btDelete = LISTA_TAREFAS.querySelectorAll('button.delete')
+    btEdit = LISTA_TAREFAS.querySelectorAll('button.edit')
+    tarefas = LISTA_TAREFAS.querySelectorAll('div.tarefa')
+    addClickBt(btDelete, removerTarefa)
+    addClickBt(btEdit, clicaramEmMim)
 }
 
-btAddTarefa.addEventListener('click', () => {
-    //criar div
-    const inputTarefa = document.querySelector('input')
-    const novaDiv = criarDiv(inputTarefa.value)
-    inputTarefa.value = ''
-    //adicionar div a lista de tarefas
-    listaTarefas.appendChild(novaDiv)
-    //dar refresh
-    refresh()
+BTADDTAREFA.addEventListener('click', () => {
+    const INPUT_TAREFA = document.querySelector('input')
+    if(!INPUT_TAREFA.value){
+        window.alert('digite um nome para a tarefa')
+    }
+    else {
+        const NOVA_DIV = criarDiv(INPUT_TAREFA.value)
+        INPUT_TAREFA.value = ''
+        LISTA_TAREFAS.appendChild(NOVA_DIV)
+        refresh()
+    }
 })
 
 function criarDiv(nomeTarefa){
@@ -63,23 +66,26 @@ function criarDiv(nomeTarefa){
 }
 
 //-------Criar funções dos botões das tarefas-------
-const clicaramEmMim = () => console.log('me clicaram')
-// console.log(typeof(clicaramEmMim))
-// Checkbox
-
-// Delete
-    addClickBt(btDelete, clicaramEmMim)
-// Edit
-    addClickBt(btEdit, clicaramEmMim)
-
-
 function addClickBt(listaBotoes, func){
-    listaBotoes.forEach((bt) => {
+    listaBotoes.forEach((bt, index) => {
         if(!bt.classList.contains('click')){
-            bt.classList.add('click')
-            bt.addEventListener('click', ()=>{
-                func()
+            bt.addEventListener('click', () => {
+                func(index)
             })
+            bt.classList.add('click')
         }
     })
 }
+const clicaramEmMim = () => console.log('me clicaram')
+// Checkbox
+
+// Delete
+    function removerTarefa(id){
+        LISTA_TAREFAS.removeChild(tarefas[id])
+        refresh()
+    }
+    addClickBt(btDelete, removerTarefa)
+    // resolver bug que não permite remover 2 tarefas em sequência
+
+// Edit
+    addClickBt(btEdit, clicaramEmMim)
