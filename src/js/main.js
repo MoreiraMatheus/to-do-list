@@ -13,7 +13,6 @@ function refresh(){
     addClickBt(btCheck, checkTarefa)
     addClickBt(btDelete, removerTarefa)
     addClickBt(btEdit, editTarefa)
-    console.log('refresh')
 }
 
 BTADDTAREFA.addEventListener('click', () => {
@@ -31,46 +30,45 @@ BTADDTAREFA.addEventListener('click', () => {
 
 function criarDiv(nomeTarefa){
     //criar a div de class tarefa
-    const tarefaNova = document.createElement('div')
-    tarefaNova.classList.add('tarefa')
+    const TAREFA_NOVA = document.createElement('div')
+    TAREFA_NOVA.classList.add('tarefa')
 
     //parágrafo novo
-    const pNovo = document.createElement('p')
-    pNovo.innerText = nomeTarefa
+    const P_NOVO = document.createElement('p')
+    P_NOVO.innerText = nomeTarefa
     //div onde ficará os novos botões
-    const btsNovos = document.createElement('div')
-    btsNovos.classList.add('bts')
+    const BTS_NOVOS = document.createElement('div')
+    BTS_NOVOS.classList.add('bts')
     
-    tarefaNova.appendChild(pNovo)
-    tarefaNova.appendChild(btsNovos)
+    TAREFA_NOVA.appendChild(P_NOVO)
+    TAREFA_NOVA.appendChild(BTS_NOVOS)
 
     //adiciona os botões
     //checkbox
-    const checkboxNova = document.createElement('input')
-    checkboxNova.setAttribute('type', 'checkbox')
-    checkboxNova.classList.add('check')
+    const CHECKBOX_NOVA = document.createElement('input')
+    CHECKBOX_NOVA.setAttribute('type', 'checkbox')
+    CHECKBOX_NOVA.classList.add('check')
     
     //delete tarefa
-    const deleteBtNovo = document.createElement('button')
-    deleteBtNovo.classList.add('delete')
-    const imgDeleteBt = document.createElement('img')
-    imgDeleteBt.setAttribute('src', 'src/img/trash.png')
-    deleteBtNovo.appendChild(imgDeleteBt)
+    const DELETE_BT_NOVO = document.createElement('button')
+    DELETE_BT_NOVO.classList.add('delete')
+    const IMG_DELETE_BT = document.createElement('img')
+    IMG_DELETE_BT.setAttribute('src', 'src/img/trash.png')
+    DELETE_BT_NOVO.appendChild(IMG_DELETE_BT)
     //edit tarefa
-    const editBtNovo = document.createElement('button')
-    editBtNovo.classList.add('edit')
-    const imgEditBt = document.createElement('img')
-    imgEditBt.setAttribute('src', 'src/img/write.png')
-    editBtNovo.appendChild(imgEditBt)
+    const EDIT_BT_NOVO = document.createElement('button')
+    EDIT_BT_NOVO.classList.add('edit')
+    const IMG_EDIT_BT = document.createElement('img')
+    IMG_EDIT_BT.setAttribute('src', 'src/img/write.png')
+    EDIT_BT_NOVO.appendChild(IMG_EDIT_BT)
     
-    btsNovos.appendChild(checkboxNova)
-    btsNovos.appendChild(deleteBtNovo)
-    btsNovos.appendChild(editBtNovo)
+    BTS_NOVOS.appendChild(CHECKBOX_NOVA)
+    BTS_NOVOS.appendChild(DELETE_BT_NOVO)
+    BTS_NOVOS.appendChild(EDIT_BT_NOVO)
 
-    return tarefaNova
+    return TAREFA_NOVA
 }
 
-//-------Criar funções dos botões das tarefas-------
 function addClickBt(listaBotoes, func){
     listaBotoes.forEach((bt, index) => {
         if(!bt.classList.contains('click')){
@@ -81,7 +79,6 @@ function addClickBt(listaBotoes, func){
         }
     })
 }
-// Checkbox
 function checkTarefa(id){
     let risco = 'none'
     const CHECKBOX_SELECIONADA = tarefas[id].querySelector('input')
@@ -91,7 +88,6 @@ function checkTarefa(id){
     refresh()
 }
 
-// Delete
 function removerTarefa(id){
     if(tarefas.length == 1){
         id = 0
@@ -100,7 +96,6 @@ function removerTarefa(id){
     refresh()
 }
 
-// Edit
 function editTarefa(id){
     const NOVO_NOME_TAREFA = window.prompt('digite o novo nome')
     const PARAGRAFO_PARA_EDITAR = tarefas[id].querySelector('p')
