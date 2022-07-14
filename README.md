@@ -1,6 +1,11 @@
 # to-do-list
- To-do list usando JavaScript
+ <div align="center">
+    <img src="src/img/preview.png">
+ </div>
 
- Um dos objetivos com esse projeto é praticar a programação orientada a objeto
+ Projeto desenvolvido usando:
+ * HTML
+ * CSS
+ * JavaScript
 
 [Clique aqui para ver o projeto funcionando na web](https://moreiramatheus.github.io/to-do-list/)

@@ -97,7 +97,7 @@ function removerTarefa(id){
 }
 
 function editTarefa(id){
-    const NOVO_NOME_TAREFA = window.prompt('digite o novo nome')
+    const NOVO_NOME_TAREFA = window.prompt('Digite o novo nome para a tarefa')
     const PARAGRAFO_PARA_EDITAR = tarefas[id].querySelector('p')
     PARAGRAFO_PARA_EDITAR.innerText = NOVO_NOME_TAREFA
     refresh()

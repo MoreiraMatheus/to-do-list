@@ -1,0 +1,30 @@
+@media(min-width: 700px){
+    #add-tarefas input{
+        width: 87%;
+    }
+}
+@media(min-width: 795px){
+    #add-tarefas input{
+        width: 89%;
+    }
+}
+@media(min-width: 890px){
+    #add-tarefas input{
+        width: 90%;
+    }
+}
+@media(min-width: 1050px){
+    #add-tarefas input{
+        width: 91%;
+    }
+}
+@media(min-width: 1160px){
+    #add-tarefas input{
+        width: 92%;
+    }
+}
+@media(min-width: 1300px){
+    #add-tarefas input{
+        width: 93%;
+    }
+}
