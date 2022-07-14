@@ -82,9 +82,12 @@ function addClickBt(listaBotoes, func){
     })
 }
 // Checkbox
-//criar função de checkbox
 function checkTarefa(id){
-    console.log('checkbox clicada')
+    let risco = 'none'
+    const CHECKBOX_SELECIONADA = tarefas[id].querySelector('input')
+    CHECKBOX_SELECIONADA.checked ? risco = 'line-through' : risco = 'none'
+    const PARAGRAFO_PARA_EDITAR = tarefas[id].querySelector('p')
+    PARAGRAFO_PARA_EDITAR.style.textDecoration = risco
     refresh()
 }
 
