@@ -2,14 +2,18 @@ const BTADDTAREFA = document.querySelectorAll('button')[0]
 const LISTA_TAREFAS = document.getElementById('lista-tarefas')
 let btDelete = LISTA_TAREFAS.querySelectorAll('button.delete')
 let btEdit = LISTA_TAREFAS.querySelectorAll('button.edit')
+let btCheck = LISTA_TAREFAS.querySelectorAll('input.check')
 let tarefas = LISTA_TAREFAS.querySelectorAll('div.tarefa')
 
 function refresh(){
+    btCheck = LISTA_TAREFAS.querySelectorAll('input.check')
     btDelete = LISTA_TAREFAS.querySelectorAll('button.delete')
     btEdit = LISTA_TAREFAS.querySelectorAll('button.edit')
     tarefas = LISTA_TAREFAS.querySelectorAll('div.tarefa')
+    addClickBt(btCheck, checkTarefa)
     addClickBt(btDelete, removerTarefa)
-    addClickBt(btEdit, clicaramEmMim)
+    addClickBt(btEdit, editTarefa)
+    console.log('refresh')
 }
 
 BTADDTAREFA.addEventListener('click', () => {
@@ -44,6 +48,7 @@ function criarDiv(nomeTarefa){
     //checkbox
     const checkboxNova = document.createElement('input')
     checkboxNova.setAttribute('type', 'checkbox')
+    checkboxNova.classList.add('check')
     
     //delete tarefa
     const deleteBtNovo = document.createElement('button')
@@ -77,6 +82,11 @@ function addClickBt(listaBotoes, func){
     })
 }
 // Checkbox
+//criar função de checkbox
+function checkTarefa(id){
+    console.log('checkbox clicada')
+    refresh()
+}
 
 // Delete
 function removerTarefa(id){
@@ -88,5 +98,9 @@ function removerTarefa(id){
 }
 
 // Edit
-    const clicaramEmMim = () => console.log('me clicaram')
-    addClickBt(btEdit, clicaramEmMim)
+function editTarefa(id){
+    const NOVO_NOME_TAREFA = window.prompt('digite o novo nome')
+    const PARAGRAFO_PARA_EDITAR = tarefas[id].querySelector('p')
+    PARAGRAFO_PARA_EDITAR.innerText = NOVO_NOME_TAREFA
+    refresh()
+}
