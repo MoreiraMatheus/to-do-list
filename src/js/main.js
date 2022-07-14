@@ -76,16 +76,17 @@ function addClickBt(listaBotoes, func){
         }
     })
 }
-const clicaramEmMim = () => console.log('me clicaram')
 // Checkbox
 
 // Delete
-    function removerTarefa(id){
-        LISTA_TAREFAS.removeChild(tarefas[id])
-        refresh()
+function removerTarefa(id){
+    if(tarefas.length == 1){
+        id = 0
     }
-    addClickBt(btDelete, removerTarefa)
-    // resolver bug que não permite remover 2 tarefas em sequência
+    LISTA_TAREFAS.removeChild(tarefas[id])
+    refresh()
+}
 
 // Edit
+    const clicaramEmMim = () => console.log('me clicaram')
     addClickBt(btEdit, clicaramEmMim)
